@@ -10,11 +10,11 @@
         android:orientation="vertical"
         android:layout_width="match_parent" 
     	android:layout_height="wrap_content" 
-    	android:layout_alignParentTop="true" 
-        >
+    	android:layout_alignParentTop="true" >
         <include layout="@layout/top1"/>
         <include layout="@layout/top2"/>
     </LinearLayout>
+
     <com.example.isweixin.MyScrollLayout    
 	  xmlns:android="http://schemas.android.com/apk/res/android"    
 	  android:id="@+id/ScrollLayout"    
@@ -46,16 +46,16 @@
                     android:listSelector="@android:color/transparent"
                      >
                 </ListView>
-	  </com.example.isweixin.MyFrame>   
-      
-	  <FrameLayout    
+	</com.example.isweixin.MyFrame>   
+
+	<FrameLayout    
 	    android:background="@color/white"
 	  	android:layout_width="fill_parent"    
 	  	android:layout_height="wrap_content">
- 	     		 <include layout="@layout/faxian"/>
-	  </FrameLayout>    
-	      
-	  <FrameLayout
+		<include layout="@layout/faxian"/>
+	</FrameLayout>    
+
+	<FrameLayout
 	    android:background="@color/white"
 	  	android:layout_width="fill_parent"    
 	  	android:layout_height="wrap_content">     
@@ -78,7 +78,7 @@
                     android:listSelector="@android:color/transparent" >
                 </ListView>
 	   	    
-	  </FrameLayout>    
+	</FrameLayout>    
 	</com.example.isweixin.MyScrollLayout> 
 </RelativeLayout>
 

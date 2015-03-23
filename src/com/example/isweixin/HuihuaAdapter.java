@@ -13,8 +13,8 @@ import android.widget.TextView;
 public class HuihuaAdapter extends BaseAdapter {
 	private Context context;
 	private ArrayList<HuiHua> list = new ArrayList<HuiHua>();
-	
-	public HuihuaAdapter(Context context,ArrayList<HuiHua> list){
+
+	public HuihuaAdapter(Context context,ArrayList<HuiHua> list) {
 		this.context = context;
 		this.list = list;
 	}
@@ -40,7 +40,7 @@ public class HuihuaAdapter extends BaseAdapter {
 	public View getView(int position, View view, ViewGroup parent) {
 		HuiHua hh = list.get(position);
 		H h = null;
-		if(view==null){
+		if (view==null){
 			h = new H();
 			view = LayoutInflater.from(context).inflate(R.layout.liaotian, parent, false);
 			h.pic = (ImageView)view.findViewById(R.id.l1);

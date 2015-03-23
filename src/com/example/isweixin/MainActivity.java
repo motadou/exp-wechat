@@ -43,22 +43,22 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 
 	private void init()
     {
-		liaotian = (TextView)findViewById(R.id.liaotian);
-		faxian = (TextView)findViewById(R.id.faxian);
+		liaotian  = (TextView)findViewById(R.id.liaotian);
+		faxian    = (TextView)findViewById(R.id.faxian);
 		tongxunlu = (TextView)findViewById(R.id.tongxunlu);
-		
+
 		listview1 = (ListView)findViewById(R.id.listView1);
 		listview2 = (ListView)findViewById(R.id.listView2);
-		
-		HuihuaAdapter ha = new HuihuaAdapter(this,getHuahui());
+
+		HuihuaAdapter ha = new HuihuaAdapter(this, getHuahui());
 		listview1.setAdapter(ha);
 		listview1.setCacheColorHint(0);
-		
-		ContactAdapter hc = new ContactAdapter(this,getContact());
+
+		ContactAdapter hc = new ContactAdapter(this, getContact());
 		listview2.setAdapter(hc);
 		listview2.setCacheColorHint(0);
-		
-    	mScrollLayout = (MyScrollLayout) findViewById(R.id.ScrollLayout); 	
+
+    	mScrollLayout = (MyScrollLayout) findViewById(R.id.ScrollLayout);
     	LinearLayout linearLayout = (LinearLayout) findViewById(R.id.lllayout);   	
     	mViewCount = mScrollLayout.getChildCount();
     	mImageViews = new LinearLayout[mViewCount];   	
@@ -67,7 +67,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
     		mImageViews[i].setEnabled(true);
     		mImageViews[i].setOnClickListener(this);
     		mImageViews[i].setTag(i);
-    	}    	
+    	}
     	mCurSel = 0;
     	mImageViews[mCurSel].setEnabled(false);    	
     	mScrollLayout.SetOnViewChangeListener(this);
@@ -81,6 +81,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 				uploadImage(MainActivity.this);
 			}
 		});
+
     	add.setOnClickListener(new View.OnClickListener() {
     		@Override
     		public void onClick(View arg0) {
@@ -88,13 +89,14 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
     		}
     	});
     }
-	
+
 	private ArrayList<ContactP> getContact(){
 		ArrayList<ContactP> hcList = new ArrayList<ContactP>();
+
 		ContactP c0 = new ContactP();
-		c0.setTxPath(R.drawable.bind_mcontact_reco_friends+"");
+		c0.setTxPath(R.drawable.bind_mcontact_reco_friends + "");
 		c0.setName("服务号");
-		
+
 		ContactP c1 = new ContactP();
 		c1.setTxPath(R.drawable.brand_default_head+"");
 		c1.setName("微信测试账号");
@@ -238,16 +240,21 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		hhList.add(h0);
 		return hhList;
 	} 
-	
-	 public void uploadImage(final Activity context){
-		 menuWindow = new SelectPicPopupWindow(MainActivity.this, itemsOnClick);
-			//显示窗口
+
+	public void uploadImage(final Activity context){
+		menuWindow = new SelectPicPopupWindow(MainActivity.this, itemsOnClick);
+		
+		//显示窗口
 		menuWindow.showAtLocation(MainActivity.this.findViewById(R.id.set), Gravity.TOP|Gravity.RIGHT, 10, 230); //设置layout在PopupWindow中显示的位置
 	 }
+
 	 public void uploadImage2(final Activity context){
 		 menuWindow2 = new SelectAddPopupWindow(MainActivity.this, itemsOnClick2);
+
+		 set = (ImageView)findViewById(R.id.set);
+
 		 //显示窗口
-		 menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.add), Gravity.TOP|Gravity.RIGHT, 10, 230); //设置layout在PopupWindow中显示的位置
+		 menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.add), Gravity.TOP|Gravity.RIGHT, 10, 30); //设置layout在PopupWindow中显示的位置
 	 }
 	 
 	 //为弹出窗口实现监听类
