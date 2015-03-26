@@ -9,6 +9,7 @@
             android:layout_width="match_parent" 
     		android:layout_height="wrap_content" 
     		android:padding="12dip"
+    		android:id="@+id/posss"
             >
             <LinearLayout 
                 android:orientation="horizontal"

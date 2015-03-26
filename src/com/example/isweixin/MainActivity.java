@@ -168,6 +168,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		
 		return hcList;
 	}
+	
 	private ArrayList<HuiHua> getHuahui(){
 		ArrayList<HuiHua> hhList = new ArrayList<HuiHua>();
 		HuiHua h1 = new HuiHua();
@@ -245,20 +246,17 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 
 	public void uploadImage(final Activity context){
 		menuWindow = new SelectPicPopupWindow(MainActivity.this, itemsOnClick);
-		
+
 		//显示窗口
 		menuWindow.showAtLocation(MainActivity.this.findViewById(R.id.set), Gravity.TOP|Gravity.RIGHT, 10, 230); //设置layout在PopupWindow中显示的位置
-	 }
+	}
 
-	
 	private Context ctxt = null;
-	
 	public int getWidth() {
 		ctxt = MainActivity.this.getApplicationContext();
 
 		return ctxt.getResources().getDisplayMetrics().widthPixels;		
 	}
-	
 
 	public int px2dip(int px){
 		float density = getDensity(ctxt);
@@ -273,11 +271,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		 menuWindow2 = new SelectAddPopupWindow(MainActivity.this, itemsOnClick2);
 
 		 int xoffInPixels = getWidth() - menuWindow2.getWidth() -10;  
-		    // 将pixels转为dip  
-		    int xoffInDip = px2dip(xoffInPixels);
-		 
-		 Log.e("MOTADOU", getWidth() + "|" + xoffInDip + "|" +  menuWindow2.getWidth() + "" );
-		 
+
 		 menuWindow2.showAsDropDown(MainActivity.this.findViewById(R.id.posss), xoffInPixels,0);
 		 menuWindow2.update();
 		 //menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.posss), Gravity.TOP|Gravity.RIGHT, 10, 0); //设置layout在PopupWindow中显示的位置
