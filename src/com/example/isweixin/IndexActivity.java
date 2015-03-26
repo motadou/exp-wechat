@@ -20,6 +20,7 @@ public class IndexActivity extends Activity {
 
 			Intent intent = new Intent(IndexActivity.this, MainActivity.class);
 			startActivity(intent);
+
 			finish();
 			super.handleMessage(msg);
 		}
@@ -37,6 +38,6 @@ public class IndexActivity extends Activity {
 			public void run() {
 				handler.sendEmptyMessage(0);
 			}
-		},15000,1000);
+		},150,1000);
 	}
 }

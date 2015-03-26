@@ -3,8 +3,10 @@ package com.example.isweixin;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -248,13 +250,40 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		menuWindow.showAtLocation(MainActivity.this.findViewById(R.id.set), Gravity.TOP|Gravity.RIGHT, 10, 230); //设置layout在PopupWindow中显示的位置
 	 }
 
+	
+	private Context ctxt = null;
+	
+	public int getWidth() {
+		ctxt = MainActivity.this.getApplicationContext();
+
+		return ctxt.getResources().getDisplayMetrics().widthPixels;		
+	}
+	
+
+	public int px2dip(int px){
+		float density = getDensity(ctxt);
+		return (int)((px - 0.5) / density);
+	}
+	
+	private  float getDensity(Context ctx){
+		return ctx.getResources().getDisplayMetrics().density;
+	}
+
 	 public void uploadImage2(final Activity context){
 		 menuWindow2 = new SelectAddPopupWindow(MainActivity.this, itemsOnClick2);
 
-		 set = (ImageView)findViewById(R.id.set);
-
+		 int xoffInPixels = getWidth() - menuWindow2.getWidth() -10;  
+		    // 将pixels转为dip  
+		    int xoffInDip = px2dip(xoffInPixels);
+		 
+		 Log.e("MOTADOU", getWidth() + "|" + xoffInDip + "|" +  menuWindow2.getWidth() + "" );
+		 
+		 menuWindow2.showAsDropDown(MainActivity.this.findViewById(R.id.posss), xoffInPixels,0);
+		 menuWindow2.update();
+		 //menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.posss), Gravity.TOP|Gravity.RIGHT, 10, 0); //设置layout在PopupWindow中显示的位置
+		 
 		 //显示窗口
-		 menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.add), Gravity.TOP|Gravity.RIGHT, 10, 30); //设置layout在PopupWindow中显示的位置
+		 //menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.add), Gravity.TOP|Gravity.RIGHT, 10, 0); //设置layout在PopupWindow中显示的位置
 	 }
 	 
 	 //为弹出窗口实现监听类
