@@ -248,7 +248,12 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		menuWindow = new SelectPicPopupWindow(MainActivity.this, itemsOnClick);
 
 		//显示窗口
-		menuWindow.showAtLocation(MainActivity.this.findViewById(R.id.set), Gravity.TOP|Gravity.RIGHT, 10, 230); //设置layout在PopupWindow中显示的位置
+		//menuWindow.showAtLocation(MainActivity.this.findViewById(R.id.set), Gravity.TOP|Gravity.RIGHT, 10, 230); //设置layout在PopupWindow中显示的位置
+
+		int xoffInPixels = getWidth() - menuWindow.getWidth() -10;  
+
+		menuWindow.showAsDropDown(MainActivity.this.findViewById(R.id.posss), xoffInPixels,0);
+		menuWindow.update();
 	}
 
 	private Context ctxt = null;
@@ -262,33 +267,32 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		float density = getDensity(ctxt);
 		return (int)((px - 0.5) / density);
 	}
-	
+
 	private  float getDensity(Context ctx){
 		return ctx.getResources().getDisplayMetrics().density;
 	}
 
-	 public void uploadImage2(final Activity context){
-		 menuWindow2 = new SelectAddPopupWindow(MainActivity.this, itemsOnClick2);
+	public void uploadImage2(final Activity context) {
+		menuWindow2 = new SelectAddPopupWindow(MainActivity.this, itemsOnClick2);
 
-		 int xoffInPixels = getWidth() - menuWindow2.getWidth() -10;  
+		int xoffInPixels = getWidth() - menuWindow2.getWidth() -10;  
 
-		 menuWindow2.showAsDropDown(MainActivity.this.findViewById(R.id.posss), xoffInPixels,0);
-		 menuWindow2.update();
-		 //menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.posss), Gravity.TOP|Gravity.RIGHT, 10, 0); //设置layout在PopupWindow中显示的位置
-		 
-		 //显示窗口
-		 //menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.add), Gravity.TOP|Gravity.RIGHT, 10, 0); //设置layout在PopupWindow中显示的位置
-	 }
-	 
-	 //为弹出窗口实现监听类
-	    private OnClickListener  itemsOnClick = new OnClickListener(){
+		menuWindow2.showAsDropDown(MainActivity.this.findViewById(R.id.posss), xoffInPixels,0);
+		menuWindow2.update();
+		//menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.posss), Gravity.TOP|Gravity.RIGHT, 10, 0); //设置layout在PopupWindow中显示的位置
 
-			public void onClick(View v) {
-				menuWindow.dismiss();
-			}
-	    };
-	    
-	    //为弹出窗口实现监听类
+		//显示窗口
+		//menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.add), Gravity.TOP|Gravity.RIGHT, 10, 0); //设置layout在PopupWindow中显示的位置
+	}
+
+	//为弹出窗口实现监听类
+	private OnClickListener  itemsOnClick = new OnClickListener(){
+		public void onClick(View v) {
+			menuWindow.dismiss();
+		}
+	};
+	
+	//为弹出窗口实现监听类
 	    private OnClickListener  itemsOnClick2 = new OnClickListener(){
 	    	
 	    	public void onClick(View v) {
