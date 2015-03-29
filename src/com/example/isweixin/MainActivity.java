@@ -6,8 +6,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,23 +26,22 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 	private TextView faxian;
 	private TextView tongxunlu;
 	
-	private boolean isOpen = false;
-	
 	private ListView listview1;
 	private ListView listview2;
 	
 	//自定义的弹出框类
-	SelectPicPopupWindow menuWindow; //弹出框
-	SelectAddPopupWindow menuWindow2; //弹出框
+	SelectPicPopupWindow menuWindow; 	//弹出框
+	SelectAddPopupWindow menuWindow2; 	//弹出框
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		init();
 	}
 
-	private void init()
-    {
+	private void init() {
 		liaotian  = (TextView)findViewById(R.id.liaotian);
 		faxian    = (TextView)findViewById(R.id.faxian);
 		tongxunlu = (TextView)findViewById(R.id.tongxunlu);
@@ -52,7 +49,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		listview1 = (ListView)findViewById(R.id.listView1);
 		listview2 = (ListView)findViewById(R.id.listView2);
 
-		HuihuaAdapter ha = new HuihuaAdapter(this, getHuahui());
+		HuihuaAdapter  ha = new HuihuaAdapter(this, getHuahui());
 		listview1.setAdapter(ha);
 		listview1.setCacheColorHint(0);
 
@@ -64,7 +61,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
     	LinearLayout linearLayout = (LinearLayout) findViewById(R.id.lllayout);   	
     	mViewCount = mScrollLayout.getChildCount();
     	mImageViews = new LinearLayout[mViewCount];   	
-    	for(int i = 0; i < mViewCount; i++)    	{
+    	for (int i = 0; i < mViewCount; i++) {
     		mImageViews[i] = (LinearLayout) linearLayout.getChildAt(i);
     		mImageViews[i].setEnabled(true);
     		mImageViews[i].setOnClickListener(this);
@@ -73,7 +70,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
     	mCurSel = 0;
     	mImageViews[mCurSel].setEnabled(false);    	
     	mScrollLayout.SetOnViewChangeListener(this);
-    	
+
     	set = (ImageView)findViewById(R.id.set);
     	add = (ImageView)findViewById(R.id.add);
     	
@@ -250,7 +247,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		//显示窗口
 		//menuWindow.showAtLocation(MainActivity.this.findViewById(R.id.set), Gravity.TOP|Gravity.RIGHT, 10, 230); //设置layout在PopupWindow中显示的位置
 
-		int xoffInPixels = getWidth() - menuWindow.getWidth() -10;  
+		int xoffInPixels = getWidth() - menuWindow.getWidth() - 20;  
 
 		menuWindow.showAsDropDown(MainActivity.this.findViewById(R.id.posss), xoffInPixels,0);
 		menuWindow.update();
@@ -275,7 +272,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 	public void uploadImage2(final Activity context) {
 		menuWindow2 = new SelectAddPopupWindow(MainActivity.this, itemsOnClick2);
 
-		int xoffInPixels = getWidth() - menuWindow2.getWidth() -10;  
+		int xoffInPixels = getWidth() - menuWindow2.getWidth() - 20;  
 
 		menuWindow2.showAsDropDown(MainActivity.this.findViewById(R.id.posss), xoffInPixels,0);
 		menuWindow2.update();
@@ -286,23 +283,22 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 	}
 
 	//为弹出窗口实现监听类
-	private OnClickListener  itemsOnClick = new OnClickListener(){
+	private OnClickListener  itemsOnClick = new OnClickListener() {
 		public void onClick(View v) {
 			menuWindow.dismiss();
 		}
 	};
-	
+
 	//为弹出窗口实现监听类
-	    private OnClickListener  itemsOnClick2 = new OnClickListener(){
-	    	
-	    	public void onClick(View v) {
-	    		menuWindow2.dismiss();
-	    	}
-	    };
-	    
+	private OnClickListener  itemsOnClick2 = new OnClickListener() {
+    	public void onClick(View v) {
+    		menuWindow2.dismiss();
+    	}
+    };
+
 	private void setCurPoint(int index)
     {
-    	if (index < 0 || index > mViewCount - 1 || mCurSel == index){
+    	if (index < 0 || index > mViewCount - 1 || mCurSel == index) {
     		return ;
     	}    	
     	mImageViews[mCurSel].setEnabled(true);
@@ -340,10 +336,10 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		 if ((keyCode == KeyEvent.KEYCODE_MENU)) {       
-	            return true;
-	        }
+		if ((keyCode == KeyEvent.KEYCODE_MENU)) {       
+			return true;
+		}
+
 		return super.onKeyDown(keyCode, event);
 	}
-
 }
