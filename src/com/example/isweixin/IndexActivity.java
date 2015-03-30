@@ -17,13 +17,11 @@ public class IndexActivity extends Activity {
 		public void handleMessage(Message msg) {
 			timer.cancel();
 
-			
 			Intent intent = new Intent(IndexActivity.this, MainActivity.class);
+
 			startActivity(intent);
-			//finish();
-			
-			IndexActivity.this.finish();
-			
+			finish();
+
 			super.handleMessage(msg);
 		}
 	};
@@ -40,6 +38,6 @@ public class IndexActivity extends Activity {
 			public void run() {
 				handler.sendEmptyMessage(0);
 			}
-		},1500,1000);
+		}, 1500, 1000);
 	}
 }
