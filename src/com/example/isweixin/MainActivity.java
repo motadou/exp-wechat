@@ -41,6 +41,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		setContentView(view);
 		WindowManager.LayoutParams attrs = getWindow().getAttributes();
 		attrs.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
+		
 		getWindow().setAttributes(attrs);
 		view.setPadding(0, getStatusBarHeight(), 0, 0);
 		init();
