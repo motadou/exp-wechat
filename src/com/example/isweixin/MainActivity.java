@@ -22,7 +22,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 	private int mCurSel;
 	private ImageView set;
 	private ImageView add;
-	
+
 	private TextView liaotian;
 	private TextView faxian;
 	private TextView tongxunlu;
