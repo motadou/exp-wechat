@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.R.anim;
 
 public class IndexActivity extends Activity {
 	private Timer timer;
@@ -22,8 +23,11 @@ public class IndexActivity extends Activity {
 			startActivity(intent);
 			finish();
 
+			
+			
+			
 			//淡入淡出效果
-			//overridePendingTransition(R.anim.fade, R.anim.hold);
+			overridePendingTransition(R.anim.fade, R.anim.hold);
 
 			//			放大淡出效果
 //			overridePendingTransition(R.anim.my_scale_action,R.anim.my_alpha_action);
@@ -39,7 +43,7 @@ public class IndexActivity extends Activity {
 			//			压缩变小淡出效果
 //			overridePendingTransition(R.anim.hyperspace_in,R.anim.hyperspace_out);
 //			右往左推出效果
-			overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
+			//overridePendingTransition(R.anim.push_left_in,R.anim.push_left_out);
 //			下往上推出效果
 //			overridePendingTransition(R.anim.push_up_in,R.anim.push_up_out);
 //			左右交错效果

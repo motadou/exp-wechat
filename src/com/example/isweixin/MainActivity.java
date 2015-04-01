@@ -41,21 +41,22 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		setContentView(view);
 		WindowManager.LayoutParams attrs = getWindow().getAttributes();
 		attrs.flags |= WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
-		
+
 		getWindow().setAttributes(attrs);
 		view.setPadding(0, getStatusBarHeight(), 0, 0);
 		init();
 	}
 
 	private int getStatusBarHeight() { 
-	      int result = 0;
-	      int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-	      if (resourceId > 0) {
-	          result = getResources().getDimensionPixelSize(resourceId);
-	      } 
-	      return result;
+		int result = 0;
+		int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+		if (resourceId > 0) {
+			result = getResources().getDimensionPixelSize(resourceId);
+		}
+		
+		return result;
 	} 
-	
+
 	private void init() {
 		liaotian  = (TextView)findViewById(R.id.liaotian);
 		faxian    = (TextView)findViewById(R.id.faxian);
