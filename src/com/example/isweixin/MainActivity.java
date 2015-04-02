@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 	//自定义的弹出框类
 	SelectPicPopupWindow menuWindow; 	//弹出框
 	SelectAddPopupWindow menuWindow2; 	//弹出框
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -53,7 +53,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		if (resourceId > 0) {
 			result = getResources().getDimensionPixelSize(resourceId);
 		}
-		
+
 		return result;
 	} 
 
@@ -65,7 +65,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		listview1 = (ListView)findViewById(R.id.listView1);
 		listview2 = (ListView)findViewById(R.id.listView2);
 
-		HuihuaAdapter  ha = new HuihuaAdapter(this, getHuahui());
+		HuihuaAdapter ha = new HuihuaAdapter(this, getHuahui());
 		listview1.setAdapter(ha);
 		listview1.setCacheColorHint(0);
 

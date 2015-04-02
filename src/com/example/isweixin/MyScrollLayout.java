@@ -11,22 +11,23 @@ import android.widget.Scroller;
 
 public class MyScrollLayout extends ViewGroup{
     private static final String TAG = "ScrollLayout";      
-    private VelocityTracker mVelocityTracker;  			// 用于判断甩动手势    
+    private VelocityTracker mVelocityTracker;    
     private static final int SNAP_VELOCITY = 400;        
-    private Scroller  mScroller;						// 滑动控制噄1�7	
+    private Scroller  mScroller;	
     private int mCurScreen;    						    
 	private int mDefaultScreen = 0;    						 
     private float mLastMotionX;       
     private float mLastMotionY;       
-    
+
     private boolean isPass = false;
-    
+
     private OnViewChangeListener mOnViewChangeListener;	 
 	public MyScrollLayout(Context context) {
 		super(context);
 		// TODO Auto-generated constructor stub
 		init(context);
-	}	
+	}
+
 	public MyScrollLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
@@ -56,8 +57,7 @@ public class MyScrollLayout extends ViewGroup{
 	                final View childView = getChildAt(i);    
 	                if (childView.getVisibility() != View.GONE) {    
 	                    final int childWidth = childView.getMeasuredWidth();    
-	                    childView.layout(childLeft, 0,     
-	                            childLeft+childWidth, childView.getMeasuredHeight());    
+	                    childView.layout(childLeft, 0, childLeft + childWidth, childView.getMeasuredHeight());    
 	                    childLeft += childWidth;    
 	                }    
 	            }    
@@ -83,11 +83,11 @@ public class MyScrollLayout extends ViewGroup{
 	        final int destScreen = (getScrollX()+ screenWidth/2)/screenWidth;    
 	        snapToScreen(destScreen);    
 	 }  
-	
+
 	 public void snapToScreen(int whichScreen) {    	
-	        // get the valid layout page    
-	        whichScreen = Math.max(0, Math.min(whichScreen, getChildCount()-1));    
-	        if (getScrollX() != (whichScreen*getWidth())) {    	                
+		 // get the valid layout page    
+		 whichScreen = Math.max(0, Math.min(whichScreen, getChildCount()-1));    
+		 if (getScrollX() != (whichScreen*getWidth())) {    	                
 	            final int delta = whichScreen*getWidth()-getScrollX();    
 	      	            mScroller.startScroll(getScrollX(), 0,     
 	                    delta, 0, 300);
@@ -107,7 +107,7 @@ public class MyScrollLayout extends ViewGroup{
 		if (mScroller.computeScrollOffset()) {    
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());  
             postInvalidate();    
-        }   
+		}   
 	}
 
 	@Override
@@ -119,7 +119,7 @@ public class MyScrollLayout extends ViewGroup{
 	            
 	        switch (action) {    
 	        case MotionEvent.ACTION_DOWN: 	
-	        	System.out.println("������onTouchEvent");
+	        	System.out.println("锟斤拷锟斤拷锟斤拷onTouchEvent");
 	        	  Log.i("", "onTouchEvent  ACTION_DOWN");	        	  
 	        	if (mVelocityTracker == null) {    
 			            mVelocityTracker = VelocityTracker.obtain();    
@@ -133,7 +133,7 @@ public class MyScrollLayout extends ViewGroup{
 	            break;    
 	                
 	        case MotionEvent.ACTION_MOVE:  
-	        	System.out.println("���໬��onTouchEvent");
+	        	System.out.println("锟斤拷锟洁滑锟斤拷onTouchEvent");
 		           int deltaX = (int)(mLastMotionX - x);	           
 	        	   if (IsCanMove(deltaX))
 	        	   {
@@ -147,7 +147,7 @@ public class MyScrollLayout extends ViewGroup{
          
 	           break;    	                
 	        case MotionEvent.ACTION_UP:       
-	        	System.out.println("����ſ�onTouchEvent");
+	        	System.out.println("锟斤拷锟斤拷趴锟給nTouchEvent");
 	        	int velocityX = 0;
 	            if (mVelocityTracker != null)
 	            {
@@ -181,52 +181,58 @@ public class MyScrollLayout extends ViewGroup{
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent event) {
 		switch (event.getAction()) {
-		case MotionEvent.ACTION_DOWN: 
-			System.out.println("������onInterceptTouchEvent");
-			if(isPass){
-				return true;
-			}
-			break;
-		case MotionEvent.ACTION_MOVE: 
-			System.out.println("���໬��onInterceptTouchEvent");
-			if(isPass){
-				return true;
-			}
-			break;
-		case MotionEvent.ACTION_UP:
-			System.out.println("����ſ�onInterceptTouchEvent");
-			break;
+			case MotionEvent.ACTION_DOWN: 
+				System.out.println("onInterceptTouchEvent");
+				if (isPass){
+					return true;
+				}
+				break;
+
+			case MotionEvent.ACTION_MOVE: 
+				System.out.println("onInterceptTouchEvent");
+				if (isPass){
+					return true;
+				}
+				break;
+			
+			case MotionEvent.ACTION_UP:
+				System.out.println("锟斤拷锟斤拷趴锟給nInterceptTouchEvent");
+				break;
 		}
+		
 		return super.onInterceptTouchEvent(event);
 	}
 	
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent event) {
 		switch (event.getAction()) {
-		case MotionEvent.ACTION_DOWN: 
-			mLastMotionX = event.getX();	           
-            mLastMotionY = event.getY();
-			System.out.println("������dispatchTouchEvent");
-			break;
-		case MotionEvent.ACTION_MOVE: 
-			System.out.println(Math.abs(event.getX()- mLastMotionX));
-			System.out.println(Math.abs(event.getY()- mLastMotionY));
-			double tanNum = Math.atan(Math.abs(event.getY()-mLastMotionY)/Math.abs(event.getX()- mLastMotionX));
-			double retote = tanNum/3.14*180;
-			System.out.println("�Ƕ�:"+retote);
-			if (retote<45) {
-				System.out.println("---------���໬��dispatchTouchEvent");
-				isPass= true;
-			}else{
-				isPass = false;
-			}
-			onInterceptTouchEvent(event);
-			System.out.println("***************"+isPass);
-			break;
-		case MotionEvent.ACTION_UP:
-			System.out.println("����ſ�dispatchTouchEvent");
-			break;
+			case MotionEvent.ACTION_DOWN: 
+				mLastMotionX = event.getX();	           
+				mLastMotionY = event.getY();
+				System.out.println("dispatchTouchEvent");
+				break;
+			
+			case MotionEvent.ACTION_MOVE: 
+				System.out.println(Math.abs(event.getX()- mLastMotionX));
+				System.out.println(Math.abs(event.getY()- mLastMotionY));
+				double tanNum = Math.atan(Math.abs(event.getY()-mLastMotionY)/Math.abs(event.getX()- mLastMotionX));
+				double retote = tanNum/3.14*180;
+				System.out.println("锟角讹拷:"+retote);
+				if (retote<45) {
+					System.out.println("---------锟斤拷锟洁滑锟斤拷dispatchTouchEvent");
+					isPass= true;
+				} else {
+					isPass = false;
+				}
+				onInterceptTouchEvent(event);
+				System.out.println("***************"+isPass);
+				break;
+				
+			case MotionEvent.ACTION_UP:
+				System.out.println("锟斤拷锟斤拷趴锟絛ispatchTouchEvent");
+				break;
 		}
+		
 		return super.dispatchTouchEvent(event);
 	}
 
