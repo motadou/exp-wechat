@@ -37,6 +37,9 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		//setContentView(R.layout.activity_main);
+
 		View view = getLayoutInflater().inflate(R.layout.activity_main, null, false);
 		setContentView(view);
 		WindowManager.LayoutParams attrs = getWindow().getAttributes();
@@ -44,6 +47,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 
 		getWindow().setAttributes(attrs);
 		view.setPadding(0, getStatusBarHeight(), 0, 0);
+		
 		init();
 	}
 

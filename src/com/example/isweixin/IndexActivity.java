@@ -23,9 +23,6 @@ public class IndexActivity extends Activity {
 			startActivity(intent);
 			finish();
 
-			
-			
-			
 			//淡入淡出效果
 			overridePendingTransition(R.anim.fade, R.anim.hold);
 
@@ -47,7 +44,7 @@ public class IndexActivity extends Activity {
 //			下往上推出效果
 //			overridePendingTransition(R.anim.push_up_in,R.anim.push_up_out);
 //			左右交错效果
-//			overridePendingTransition(R.anim.slide_left,R.anim.slide_right);
+			//overridePendingTransition(R.anim.slide_left,R.anim.slide_right);
 //			放大淡出效果
 //			overridePendingTransition(R.anim.wave_scale,R.anim.my_alpha_action);
 //			缩小效果
