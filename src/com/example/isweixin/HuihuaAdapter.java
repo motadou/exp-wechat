@@ -14,7 +14,7 @@ public class HuihuaAdapter extends BaseAdapter {
 	private Context context;
 	private ArrayList<HuiHua> list = new ArrayList<HuiHua>();
 
-	public HuihuaAdapter(Context context,ArrayList<HuiHua> list) {
+	public HuihuaAdapter(Context context, ArrayList<HuiHua> list) {
 		this.context = context;
 		this.list = list;
 	}

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Scroller;
 
-public class MyScrollLayout extends ViewGroup{
+public class MyScrollLayout extends ViewGroup {
     private static final String TAG = "ScrollLayout";      
     private VelocityTracker mVelocityTracker;    
     private static final int SNAP_VELOCITY = 400;        
