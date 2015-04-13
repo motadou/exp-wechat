@@ -4,14 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-<LinearLayout 
-	    	android:orientation="horizontal" 
-	    	android:background="#F5F5F5"
-	    	android:layout_width="match_parent" 
-	    	android:layout_height="wrap_content" 
-	    	android:id="@+id/lllayout"
-	    	>
-    	
+	<LinearLayout 
+		android:orientation="horizontal" 
+		android:background="#F5F5F5"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content" 
+		android:id="@+id/lllayout"
+	>
         <LinearLayout 
             android:orientation="vertical"
             android:layout_weight="1"
@@ -19,7 +18,7 @@
             android:background="@drawable/guide_round"
             android:layout_width="match_parent" 
     		android:layout_height="wrap_content" 
-            >
+		>
             <TextView 
                 android:padding="10dip"
                 android:id="@+id/liaotian"
@@ -29,9 +28,9 @@
                 android:textColor="@color/green"
                 android:layout_width="match_parent" 
     			android:layout_height="wrap_content"
-                />
-            
+			/>
         </LinearLayout>
+
         <LinearLayout 
             android:orientation="vertical"
             android:layout_weight="1"
@@ -41,7 +40,7 @@
             android:saveEnabled="false"
             android:layout_width="match_parent" 
     		android:layout_height="wrap_content" 
-            >
+		>
             <TextView 
                 android:padding="10dip"
                 android:id="@+id/faxian"
@@ -51,9 +50,9 @@
                 android:textColor="@color/black"
                 android:layout_width="match_parent" 
     			android:layout_height="wrap_content"
-                />
-            
+          	/>
         </LinearLayout>
+
         <LinearLayout 
             android:orientation="vertical"
             android:layout_weight="1"
@@ -62,7 +61,7 @@
             android:focusable="false"
             android:layout_width="match_parent" 
     		android:layout_height="wrap_content" 
-            >
+		>
             <TextView 
                 android:padding="10dip"
                 android:id="@+id/tongxunlu"
@@ -72,8 +71,7 @@
                 android:textColor="@color/black"
                 android:layout_width="match_parent" 
     			android:layout_height="wrap_content"
-                />
-            
+         	/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

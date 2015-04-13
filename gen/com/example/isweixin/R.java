@@ -9,8 +9,43 @@ package com.example.isweixin;
 
 public final class R {
     public static final class anim {
-        public static final int head_in=0x7f040000;
-        public static final int head_out=0x7f040001;
+        public static final int alpha_rotate=0x7f040000;
+        public static final int alpha_scale=0x7f040001;
+        public static final int alpha_scale_rotate=0x7f040002;
+        public static final int alpha_scale_translate=0x7f040003;
+        public static final int alpha_scale_translate_rotate=0x7f040004;
+        public static final int alpha_translate=0x7f040005;
+        public static final int alpha_translate_rotate=0x7f040006;
+        public static final int cycle_7=0x7f040007;
+        public static final int fade=0x7f040008;
+        public static final int head_in=0x7f040009;
+        public static final int head_out=0x7f04000a;
+        public static final int hold=0x7f04000b;
+        public static final int hyperspace_in=0x7f04000c;
+        public static final int hyperspace_out=0x7f04000d;
+        public static final int my_alpha_action=0x7f04000e;
+        public static final int my_rotate_action=0x7f04000f;
+        public static final int my_scale_action=0x7f040010;
+        public static final int my_translate_action=0x7f040011;
+        public static final int myanimation_simple=0x7f040012;
+        public static final int myown_design=0x7f040013;
+        public static final int push_left_in=0x7f040014;
+        public static final int push_left_out=0x7f040015;
+        public static final int push_up_in=0x7f040016;
+        public static final int push_up_out=0x7f040017;
+        public static final int scale_rotate=0x7f040018;
+        public static final int scale_translate=0x7f040019;
+        public static final int scale_translate_rotate=0x7f04001a;
+        public static final int shake=0x7f04001b;
+        public static final int slide_left=0x7f04001c;
+        public static final int slide_right=0x7f04001d;
+        public static final int slide_top_to_bottom=0x7f04001e;
+        public static final int translate_rotate=0x7f04001f;
+        public static final int wave_scale=0x7f040020;
+        public static final int zoom_enter=0x7f040021;
+        public static final int zoom_exit=0x7f040022;
+        public static final int zoomin=0x7f040023;
+        public static final int zoomout=0x7f040024;
     }
     public static final class attr {
     }
@@ -565,17 +600,18 @@ public final class R {
         public static final int tx2=0x7f0a000f;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int addxml=0x7f030001;
-        public static final int bottomdialog=0x7f030002;
-        public static final int faxian=0x7f030003;
-        public static final int index=0x7f030004;
-        public static final int liaotian=0x7f030005;
-        public static final int listview_item=0x7f030006;
-        public static final int tongxunlu=0x7f030007;
-        public static final int top1=0x7f030008;
-        public static final int top2=0x7f030009;
-        public static final int webview_qq=0x7f03000a;
+        public static final int activity_add=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int addxml=0x7f030002;
+        public static final int bottomdialog=0x7f030003;
+        public static final int faxian=0x7f030004;
+        public static final int index=0x7f030005;
+        public static final int liaotian=0x7f030006;
+        public static final int listview_item=0x7f030007;
+        public static final int tongxunlu=0x7f030008;
+        public static final int top1=0x7f030009;
+        public static final int top2=0x7f03000a;
+        public static final int webview_qq=0x7f03000b;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -601,6 +637,7 @@ public final class R {
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int Transparent=0x7f080003;
         public static final int mystyle=0x7f080002;
     }
 }

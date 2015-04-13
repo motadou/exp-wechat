@@ -3,6 +3,7 @@ package com.example.isweixin;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -40,6 +41,8 @@ public class SelectAddPopupWindow extends PopupWindow {
 		//mMenuView添加OnTouchListener监听判断获取触屏位置如果在选择框外面则销毁弹出框
 		mMenuView.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
+				Log.e("MOTADOU", "mMenuView.setOnTouchListener");
+				
 				int height = mMenuView.findViewById(R.id.pop_layout2).getTop();
 				int y=(int) event.getY();
 				if(event.getAction()==MotionEvent.ACTION_UP){
@@ -51,6 +54,9 @@ public class SelectAddPopupWindow extends PopupWindow {
 			}
 		});
 
+		
+		
+		
 	}
 
 }

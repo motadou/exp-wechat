@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -78,9 +79,11 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		listview2.setCacheColorHint(0);
 
     	mScrollLayout = (MyScrollLayout) findViewById(R.id.ScrollLayout);
+    	mViewCount    = mScrollLayout.getChildCount();
+
     	LinearLayout linearLayout = (LinearLayout) findViewById(R.id.lllayout);   	
-    	mViewCount = mScrollLayout.getChildCount();
-    	mImageViews = new LinearLayout[mViewCount];   	
+
+    	mImageViews = new LinearLayout[mViewCount];
     	for (int i = 0; i < mViewCount; i++) {
     		mImageViews[i] = (LinearLayout) linearLayout.getChildAt(i);
     		mImageViews[i].setEnabled(true);
@@ -97,14 +100,14 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
     	set.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				uploadImage(MainActivity.this);
+				uploadImageMenu(MainActivity.this);
 			}
 		});
 
     	add.setOnClickListener(new View.OnClickListener() {
     		@Override
     		public void onClick(View arg0) {
-    			uploadImage2(MainActivity.this);
+    			uploadImageAdd(MainActivity.this);
     		}
     	});
     }
@@ -258,10 +261,11 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		hhList.add(h8);
 		hhList.add(h9);
 		hhList.add(h0);
+		
 		return hhList;
 	} 
 
-	public void uploadImage(final Activity context){
+	public void uploadImageMenu(final Activity context){
 		menuWindow = new SelectPicPopupWindow(MainActivity.this, itemsOnClick);
 
 		//显示窗口
@@ -280,7 +284,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		return ctxt.getResources().getDisplayMetrics().widthPixels;		
 	}
 
-	public int px2dip(int px){
+	public int px2dip(int px) {
 		float density = getDensity(ctxt);
 		return (int)((px - 0.5) / density);
 	}
@@ -289,7 +293,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 		return ctx.getResources().getDisplayMetrics().density;
 	}
 
-	public void uploadImage2(final Activity context) {
+	public void uploadImageAdd(final Activity context) {
 		menuWindow2 = new SelectAddPopupWindow(MainActivity.this, itemsOnClick2);
 
 		int xoffInPixels = getWidth() - menuWindow2.getWidth() - 20;  
@@ -305,6 +309,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 	//为弹出窗口实现监听类
 	private OnClickListener  itemsOnClick = new OnClickListener() {
 		public void onClick(View v) {
+			Log.e("MOTADOU", "menuWindow.dismiss()");
 			menuWindow.dismiss();
 		}
 	};
@@ -312,6 +317,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 	//为弹出窗口实现监听类
 	private OnClickListener  itemsOnClick2 = new OnClickListener() {
     	public void onClick(View v) {
+    		Log.e("MOTADOU", "menuWindow2.dismiss()");
     		menuWindow2.dismiss();
     	}
     };
@@ -343,12 +349,14 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
     @Override
 	public void OnViewChange(int view) {
 		// TODO Auto-generated method stub
+    	Log.e("MOTADOU", "OnViewChange");
 		setCurPoint(view);
 	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		Log.e("MOTADOU", "onClick");
 		int pos = (Integer)(v.getTag());
 		setCurPoint(pos);
 		mScrollLayout.snapToScreen(pos);
@@ -356,6 +364,7 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		Log.e("MOTADOU", "onKeyDown");
 		if ((keyCode == KeyEvent.KEYCODE_MENU)) {       
 			return true;
 		}

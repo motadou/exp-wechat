@@ -23,22 +23,22 @@ public class SelectPicPopupWindow extends PopupWindow {
 
 	public SelectPicPopupWindow(final Activity context,OnClickListener itemsOnClick) {
 		super(context);
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mMenuView = inflater.inflate(R.layout.bottomdialog, null);
-		
+
 		int h = context.getWindowManager().getDefaultDisplay().getHeight();
 		int w = context.getWindowManager().getDefaultDisplay().getWidth();
 		btn_cancel = (Button) mMenuView.findViewById(R.id.btn_cancel);
+
 		//取消按钮
 		btn_cancel.setOnClickListener(new OnClickListener() {
-
 			public void onClick(View v) {
 				//销毁弹出框
 				SaveDate.saveDate(context, new OAuthV2()); 
 				context.finish();
 			}
 		});
+
 		//设置按钮监听
 		//设置SelectPicPopupWindow的View
 		this.setContentView(mMenuView);
