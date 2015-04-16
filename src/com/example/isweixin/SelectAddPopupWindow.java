@@ -1,8 +1,10 @@
 package com.example.isweixin;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,13 +17,21 @@ import android.widget.PopupWindow;
 public class SelectAddPopupWindow extends PopupWindow {
 	private View mMenuView;
 
+	@SuppressLint("InflateParams")
 	public SelectAddPopupWindow(final Activity context,OnClickListener itemsOnClick) {
 		super(context);
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mMenuView = inflater.inflate(R.layout.addxml, null);
 
 		//int h = context.getWindowManager().getDefaultDisplay().getHeight();
-		int w = context.getWindowManager().getDefaultDisplay().getWidth();
+		//int wa = context.getWindowManager().getDefaultDisplay().getWidth();
+
+		DisplayMetrics dm = new DisplayMetrics();
+		context.getWindowManager().getDefaultDisplay().getMetrics(dm);
+		int w = dm.widthPixels;
+		int h = dm.heightPixels;
+
+		Log.e("MOTADOU", w + "," + h);
 
 		//设置按钮监听
 		//设置SelectPicPopupWindow的View
@@ -42,7 +52,7 @@ public class SelectAddPopupWindow extends PopupWindow {
 		mMenuView.setOnTouchListener(new OnTouchListener() {
 			public boolean onTouch(View v, MotionEvent event) {
 				Log.e("MOTADOU", "mMenuView.setOnTouchListener");
-				
+
 				int height = mMenuView.findViewById(R.id.pop_layout2).getTop();
 				int y=(int) event.getY();
 				if(event.getAction()==MotionEvent.ACTION_UP){
