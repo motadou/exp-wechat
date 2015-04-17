@@ -2,6 +2,8 @@ package com.example.isweixin;
 
 import java.util.ArrayList;
 
+import com.example.isweixin.window.MenuWindowAdd;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
@@ -294,12 +296,19 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 	}
 
 	public void uploadImageAdd(final Activity context) {
+		Log.e("MOTADOU", "uploadImage");
+		MenuWindowAdd win = new MenuWindowAdd(MainActivity.this);
+		win.showPopupWindow(MainActivity.this.findViewById(R.id.posss), 50,0);
+		
+		/*
+		
 		menuWindow2 = new SelectAddPopupWindow(MainActivity.this, itemsOnClick2);
 
 		int xoffInPixels = getWidth() - menuWindow2.getWidth() - 20;  
 
 		menuWindow2.showAsDropDown(MainActivity.this.findViewById(R.id.posss), xoffInPixels,0);
 		menuWindow2.update();
+		*/
 		//menuWindow2.showAtLocation(MainActivity.this.findViewById(R.id.posss), Gravity.TOP|Gravity.RIGHT, 10, 0); //设置layout在PopupWindow中显示的位置
 
 		//显示窗口
