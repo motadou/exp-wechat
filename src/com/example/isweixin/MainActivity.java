@@ -298,6 +298,9 @@ public class MainActivity extends Activity implements OnViewChangeListener, OnCl
 	public void uploadImageAdd(final Activity context) {
 		Log.e("MOTADOU", "uploadImage");
 		MenuWindowAdd win = new MenuWindowAdd(MainActivity.this);
+		
+		Log.e("MOTADOU", win.getWidth() + "#############");
+		
 		win.showPopupWindow(MainActivity.this.findViewById(R.id.posss), 50,0);
 		
 		/*
