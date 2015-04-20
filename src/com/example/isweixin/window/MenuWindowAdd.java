@@ -27,45 +27,38 @@ import android.graphics.drawable.ColorDrawable;
 public class MenuWindowAdd extends PopupWindow {
 	View view;
 	List<Map<String, String>> moreList;
-	
+
 	@SuppressLint("InflateParams")
 	public MenuWindowAdd(final Activity context) {
 		super(context);
-		
+
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view = inflater.inflate(R.layout.activity_add, null);
 
-		
 		DisplayMetrics dm = new DisplayMetrics();
 		context.getWindowManager().getDefaultDisplay().getMetrics(dm);
 		int w = dm.widthPixels;
 		int h = dm.heightPixels;
 
-		Log.e("MOTADOU", w + "," + h);
-
-
 		this.setContentView(view);
-		this.setWidth(w/2+50);
-
-		//设置按钮监听
-		
-		
-		//设置SelectPicPopupWindow弹出窗体的宽
+		//this.setWidth(w/2+50);
 		
 		//设置SelectPicPopupWindow弹出窗体的高
 		this.setHeight(LayoutParams.WRAP_CONTENT);
+
 		//设置SelectPicPopupWindow弹出窗体可点击
 		this.setFocusable(true);
+		
 		//设置SelectPicPopupWindow弹出窗体动画效果
-		//this.setAnimationStyle(R.style.mystyle);
+		this.setAnimationStyle(R.style.mystyle);
+		
 		//实例化一个ColorDrawable颜色为半透明
 		ColorDrawable dw = new ColorDrawable(0000000000);
 		//设置SelectPicPopupWindow弹出窗体的背景
 		this.setBackgroundDrawable(dw);
-        
+
         ListView lvPopupList = (ListView) view.findViewById(R.id.lv_popup_list);
-        
-        
+
 		moreList = new ArrayList<Map<String, String>>();
 		Map<String, String> map;
 		map = new HashMap<String, String>();
@@ -79,26 +72,21 @@ public class MenuWindowAdd extends PopupWindow {
 		moreList.add(map);
 
 		lvPopupList.setAdapter(new SimpleAdapter(context, 
-				moreList,
-				R.layout.list_item_popupwindow, 
-				new String[] { "share_key" },
-				new int[]    { R.id.tv_list_item }));
-		
+			moreList,
+			R.layout.list_item_popupwindow, 
+			new String[] { "share_key" },
+			new int[]    { R.id.tv_list_item }));
+
 		lvPopupList.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-
-				Toast.makeText(context,
-						moreList.get(position).get("share_key"),
-						Toast.LENGTH_LONG).show();
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Toast.makeText(context, moreList.get(position).get("share_key"), Toast.LENGTH_SHORT).show();
+				
 			}
 		});
-		
-		
-		Log.e("MOTADOU", "5dfdfdfdfd");
-		
+
+		lvPopupList.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+		this.setWidth(lvPopupList.getMeasuredWidth());
 	}
 
 	public void showPopupWindow(View anchor, int xoff, int yoff) {
