@@ -14,8 +14,8 @@ public class MyScrollLayout extends ViewGroup {
     private VelocityTracker mVelocityTracker;    
     private static final int SNAP_VELOCITY = 400;        
     private Scroller  mScroller;	
-    private int mCurScreen;    						    
-	private int mDefaultScreen = 0;    						 
+    private int mCurScreen;
+	private int mDefaultScreen = 0;
     private float mLastMotionX;       
     private float mLastMotionY;       
 
